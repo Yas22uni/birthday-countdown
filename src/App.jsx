@@ -21,7 +21,7 @@ const dailyMessages = [
 
 // ۳. پیام پیش‌فرض
 const DEFAULT_MESSAGE = {
-  message: "امروز هم روز قشنگی هست، درست مثل خودت... ✨",
+  message: "امروزم یه روز قشنگ دیگه مثل خود تو... ✨",
   songUrl: '/songs/song.mp3'
 };
 
@@ -94,7 +94,7 @@ function App() {
       {/* بخش شمارش معکوس */}
       <div className="mb-10 text-center">
         <h2 className="text-xl font-light tracking-widest uppercase mb-4 opacity-80">
-          {timeLeft.days > 0 ? "Countdown to her Birthday" : "Happy Birthday! 🎉"}
+          {timeLeft.days > 0 ? "Countdown to your Birthday my Aurora" : "Happy Birthday! 🎉"}
         </h2>
         <div className="flex gap-4 text-center">
           <TimeUnit value={timeLeft.days} label="Days" />
