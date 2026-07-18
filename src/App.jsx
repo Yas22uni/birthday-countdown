@@ -3,26 +3,40 @@ import React, { useState, useEffect, useRef } from 'react';
 // ۱. تنظیمات اصلی
 const BIRTH_MONTH = 6; // جولای
 const BIRTH_DAY = 27;
+const BASE = import.meta.env.BASE_URL;
 
 // ۲. لیست پیام‌های اختصاصی
+// const dailyMessages = [
+//   { date: '2026-07-27', message: 'تولدت مبارک عشق من! ✨❤️', songUrl: '/songs/birthday.mp3' },
+//   { date: '2026-07-26', message: 'فقط یک روز تا دیدن لبخند تولدت مونده... 🌹', songUrl: '/songs/day10.mp3' },
+//   { date: '2026-07-25', message: 'تعداد روزها کم میشه و قلب من پرپر می‌زنه... 💓', songUrl: '/songs/day9.mp3' },
+//   { date: '2026-07-24', message: 'هر روز که می‌گذره، هیجان من برای جشن گرفتن با تو بیشتر میشه موش. ✨', songUrl: '/songs/day8.mp3' },
+//   { date: '2026-07-23', message: 'تو زیباترین بلایی هستی که توی زندگیم افتاده بلاچک. ❤️', songUrl: '/songs/day7.mp3' },
+//   { date: '2026-07-22', message: 'منتظر روزی هستم که تو به دنیا تا یه روز معنی زندگی ازت بفهمم. 🌟', songUrl: '/songs/day6.mp3' },
+//   { date: '2026-07-21', message: 'بودن با تو، بهترین بخش از زندگی بوده. 🌸', songUrl: '/songs/day5.mp3' },
+//   { date: '2026-07-20', message: 'تو بی دینم میکنی من اسیر توام و این قشنگ ترین نوع اسارته. 💞', songUrl: '/songs/day4.mp3' },
+//   { date: '2026-07-19', message: 'تو تنها کسی هستی که می‌تونه با یه لبخند، تمام خستگی‌های روحم رو از بین ببره. 😊', songUrl: '/songs/day3.mp3' },
+//   { date: '2026-07-18', message: 'دیگه هیچ وقت نگو منتظر تولدت نیستم که من هر روز لحظه شماری میکنمم', songUrl: '/songs/day2.mp3' },
+//   { date: '2026-07-17', message: 'شروع شمارش معکوس برای عزیزترین روز سال... ⏳', songUrl: '/songs/day1.mp3' },
+// ];
 const dailyMessages = [
-  { date: '2026-07-27', message: 'تولدت مبارک عشق من! ✨❤️', songUrl: '/songs/birthday.mp3' },
-  { date: '2026-07-26', message: 'فقط یک روز تا دیدن لبخند تولدت مونده... 🌹', songUrl: '/songs/day10.mp3' },
-  { date: '2026-07-25', message: 'تعداد روزها کم میشه و قلب من پرپر می‌زنه... 💓', songUrl: '/songs/day9.mp3' },
-  { date: '2026-07-24', message: 'هر روز که می‌گذره، هیجان من برای جشن گرفتن با تو بیشتر میشه موش. ✨', songUrl: '/songs/day8.mp3' },
-  { date: '2026-07-23', message: 'تو زیباترین بلایی هستی که توی زندگیم افتاده بلاچک. ❤️', songUrl: '/songs/day7.mp3' },
-  { date: '2026-07-22', message: 'منتظر روزی هستم که تو به دنیا تا یه روز معنی زندگی ازت بفهمم. 🌟', songUrl: '/songs/day6.mp3' },
-  { date: '2026-07-21', message: 'بودن با تو، بهترین بخش از زندگی بوده. 🌸', songUrl: '/songs/day5.mp3' },
-  { date: '2026-07-20', message: 'تو بی دینم میکنی من اسیر توام و این قشنگ ترین نوع اسارته. 💞', songUrl: '/songs/day4.mp3' },
-  { date: '2026-07-19', message: 'تو تنها کسی هستی که می‌تونه با یه لبخند، تمام خستگی‌های روحم رو از بین ببره. 😊', songUrl: '/songs/day3.mp3' },
-  { date: '2026-07-18', message: 'دیگه هیچ وقت نگو منتظر تولدت نیستم که من هر روز لحظه شماری میکنمم', songUrl: '/songs/day2.mp3' },
-  { date: '2026-07-17', message: 'شروع شمارش معکوس برای عزیزترین روز سال... ⏳', songUrl: '/songs/day1.mp3' },
+  { date: '2026-07-27', message: 'تولدت مبارک عشق من! ✨❤️', songUrl: `${BASE}songs/birthday.mp3` },
+  { date: '2026-07-26', message: 'فقط یک روز تا دیدن لبخند تولدت مونده... 🌹', songUrl: `${BASE}songs/day10.mp3` },
+  { date: '2026-07-25', message: 'تعداد روزها کم میشه و قلب من پرپر می‌زنه... 💓', songUrl: `${BASE}songs/day9.mp3` },
+  { date: '2026-07-24', message: 'هر روز که می‌گذره، هیجان من برای جشن گرفتن با تو بیشتر میشه موش. ✨', songUrl: `${BASE}songs/day8.mp3` },
+  { date: '2026-07-23', message: 'تو زیباترین بلایی هستی که توی زندگیم افتاده بلاچک. ❤️', songUrl: `${BASE}songs/day7.mp3` },
+  { date: '2026-07-22', message: 'منتظر روزی هستم که تو به دنیا تا یه روز معنی زندگی ازت بفهمم. 🌟', songUrl: `${BASE}songs/day6.mp3` },
+  { date: '2026-07-21', message: 'بودن با تو، بهترین بخش از زندگی بوده. 🌸', songUrl: `${BASE}songs/day5.mp3` },
+  { date: '2026-07-20', message: 'تو بی دینم میکنی من اسیر توام و این قشنگ ترین نوع اسارته. 💞', songUrl: `${BASE}songs/day4.mp3` },
+  { date: '2026-07-19', message: 'تو تنها کسی هستی که می‌تونه با یه لبخند، تمام خستگی‌های روحم رو از بین ببره. 😊', songUrl: `${BASE}songs/day3.mp3` },
+  { date: '2026-07-18', message: 'دیگه هیچ وقت نگو منتظر تولدت نیستم که من هر روز لحظه شماری میکنمم', songUrl: `${BASE}songs/day2.mp3` },
+  { date: '2026-07-17', message: 'شروع شمارش معکوس برای عزیزترین روز سال... ⏳', songUrl: `${BASE}songs/day1.mp3` },
 ];
 
 // ۳. پیام پیش‌فرض
 const DEFAULT_MESSAGE = {
   message: "امروزم یه روز قشنگ دیگه مثل خود تو... ✨",
-  songUrl: '/songs/song.mp3'
+  songUrl: `${BASE}songs/song.mp3`
 };
 
 function App() {
